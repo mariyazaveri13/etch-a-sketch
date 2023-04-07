@@ -5,6 +5,7 @@ const parentNode = document.getElementById('container');
 const indicator = document.getElementById('sizeIndicator');
 const paintBtn = document.getElementById('paint');
 const erasorBtn = document.getElementById('erasor');
+const clearBtn = document.getElementById('clear');
 
 let currMode = 'paint';
 let newMode = '';
@@ -21,6 +22,8 @@ slider.oninput = (e) => makeGrid(e.target.value);
 
 paintBtn.onclick = (e) => addClassActive('paint');
 erasorBtn.onclick = (e) => addClassActive('erasor');
+clearBtn.onclick = (e) => addClassActive('clear');
+
 
 function addClassActive(mode){
     switch(mode){
@@ -30,6 +33,10 @@ function addClassActive(mode){
 
         case 'erasor':
             erase();
+            break;
+
+        case 'clear':
+            clear();
             break;
     }
 }
@@ -60,13 +67,24 @@ function makeGrid(block){
 function paint(){
     childDivs = document.querySelectorAll('.container > div');
     childDivs.forEach(element => {
-        element.onmousemove = (e) => mouseDown == true ? element.style.background = '#0B2447' : false;
+        element.onmousemove = (e) => {
+            if(mouseDown) element.style.background = '#0B2447';
+            else return
+        }
     });
 }
 
 function erase(){
     childDivs = document.querySelectorAll('.container > div');
     childDivs.forEach(element => {
-        element.onmousemove = (e) => mouseDown == true ? element.style.background = '#fff' : false;
+        element.onmousemove = (e) => {
+            if(mouseDown) element.style.background = '#fff';
+            else return
+        }
     });
+}
+
+function clear(){
+    childDivs = document.querySelectorAll('.container > div');
+    childDivs.forEach(element => element.style.removeProperty('background'));
 }
