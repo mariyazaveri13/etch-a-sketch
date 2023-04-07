@@ -1,4 +1,5 @@
 const DEFAULT_GRID = 16;
+let bgcolor = '#0B2447';
 
 const slider = document.getElementById('sizeSlider');
 const parentNode = document.getElementById('container');
@@ -6,6 +7,8 @@ const indicator = document.getElementById('sizeIndicator');
 const paintBtn = document.getElementById('paint');
 const erasorBtn = document.getElementById('erasor');
 const clearBtn = document.getElementById('clear');
+const rainbowBtn = document.getElementById('rainbow');
+const colorPicker = document.getElementById('colors');
 
 let currMode = 'paint';
 let newMode = '';
@@ -19,16 +22,20 @@ document.body.onmousedown  = (e) => (mouseDown = true);
 document.body.onmouseup = (e) => (mouseDown = false);
 
 slider.oninput = (e) => makeGrid(e.target.value);
+colorPicker.oninput = (e) => {
+    bgcolor = e.target.value;
+    paint(bgcolor);
+};
 
 paintBtn.onclick = (e) => addClassActive('paint');
 erasorBtn.onclick = (e) => addClassActive('erasor');
 clearBtn.onclick = (e) => addClassActive('clear');
-
+rainbowBtn.onclick = (e) => addClassActive('rainbow');
 
 function addClassActive(mode){
     switch(mode){
         case 'paint':
-            paint();
+            paint(bgcolor);
             break;
 
         case 'erasor':
@@ -37,6 +44,10 @@ function addClassActive(mode){
 
         case 'clear':
             clear();
+            break;
+
+        case 'rainbow':
+            rainbow();
             break;
     }
 }
@@ -60,15 +71,15 @@ function makeGrid(block){
         parentNode.appendChild(miniDivs);
     }
 
-    paint();
+    paint(bgcolor);
 
 }
 
-function paint(){
+function paint(color='#0B2447'){
     childDivs = document.querySelectorAll('.container > div');
     childDivs.forEach(element => {
         element.onmousemove = (e) => {
-            if(mouseDown) element.style.background = '#0B2447';
+            if(mouseDown) element.style.background = color;
             else return
         }
     });
@@ -87,4 +98,13 @@ function erase(){
 function clear(){
     childDivs = document.querySelectorAll('.container > div');
     childDivs.forEach(element => element.style.removeProperty('background'));
+}
+
+function rainbow(){
+    childDivs = document.querySelectorAll('.container > div');
+    childDivs.forEach(element =>{
+        element.onmousemove = (e) =>{
+            if(mouseDown) element.style.background = `rgb(${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)},${Math.floor(Math.random()*256)})`;
+        }
+    });
 }
