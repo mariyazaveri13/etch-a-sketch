@@ -51,7 +51,7 @@ body{
     padding: 10vh;
     display: flex;
     flex-direction: column;
-    gap: 3vh;
+    gap: 1.5vh;
     align-items: center;
 }
 
