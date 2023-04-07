@@ -19,3 +19,4 @@ Demo -
 
 http://mariyazaveri13.github.io/etch-a-sketch/ 👈
 
+Note - Works best on desktop.
