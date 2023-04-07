@@ -5,20 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch a sketch</title>
+    <link rel="icon" href="/your_path_to_image/favicon.jpg">
     <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Berkshire+Swash" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
 </head>
 <body>
     <div class="controls">
-        <h1>Etch a sketch</h1>
+        <h1 class="font-big">Etch a sketch</h1>
         <input id="sizeSlider" type="range" value="16" min="4" max="64">
-        <div id="sizeIndicator"></div>
+        <div id="sizeIndicator" class="font-medium"></div>
 
         <input type="color" id="colors" value="#0B2447"/>
 
         <button id="paint" value="paint">Paint</button>
-        <button id="erasor" value="erasor">Erasor</button>
         <button id="rainbow" value="rainbow">Rainbow</button>
+        <button id="erasor" value="erasor">Erasor</button>
         <button id="clear" value="clear">Clear</button>
     </div>
     <div class="container" id="container">

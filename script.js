@@ -18,8 +18,8 @@ let childDivs;
 makeGrid(DEFAULT_GRID);
 
 let mouseDown = false;
-document.body.onmousedown  = (e) => (mouseDown = true);
-document.body.onmouseup = (e) => (mouseDown = false);
+parentNode.onmousedown  = (e) => (mouseDown = true);
+parentNode.onmouseup = (e) => (mouseDown = false);
 
 slider.oninput = (e) => makeGrid(e.target.value);
 colorPicker.oninput = (e) => {
