@@ -9,9 +9,6 @@ body{
     background: #19376D;
     font-family: 'Berkshire Swash',sans-serif;
     color: #A5D7E8;
-}
-
-.body{
     display: flex;
     justify-content: center;
 }
