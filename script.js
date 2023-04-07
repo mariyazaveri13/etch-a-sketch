@@ -9,9 +9,13 @@ const erasorBtn = document.getElementById('erasor');
 const clearBtn = document.getElementById('clear');
 const rainbowBtn = document.getElementById('rainbow');
 const colorPicker = document.getElementById('colors');
+const PAINT = 'paint';  
+const ERASOR = 'erasor';  
+const RAINBOW = 'rainbow';
+const CLEAR = 'clear';
 
-let currMode = 'paint';
-let newMode = '';
+let currMode = PAINT;
+let newMode = PAINT;
 
 let childDivs;
 
@@ -27,31 +31,55 @@ colorPicker.oninput = (e) => {
     paint(bgcolor);
 };
 
-paintBtn.onclick = (e) => addClassActive('paint');
-erasorBtn.onclick = (e) => addClassActive('erasor');
-clearBtn.onclick = (e) => addClassActive('clear');
-rainbowBtn.onclick = (e) => addClassActive('rainbow');
+paintBtn.onclick = (e) => addClassActive(PAINT);
+erasorBtn.onclick = (e) => addClassActive(ERASOR);
+clearBtn.onclick = (e) => addClassActive(CLEAR);
+rainbowBtn.onclick = (e) => addClassActive(RAINBOW);
 
 function addClassActive(mode){
     switch(mode){
-        case 'paint':
+        case PAINT:
+            newMode = PAINT;
+            changeModes();
             paint(bgcolor);
             break;
 
-        case 'erasor':
+        case ERASOR:
+            newMode = ERASOR;
+            changeModes();
             erase();
             break;
 
-        case 'clear':
+        case CLEAR:
             clear();
             break;
 
-        case 'rainbow':
+        case RAINBOW:
+            newMode = RAINBOW;
+            changeModes();
             rainbow();
             break;
     }
 }
 
+function changeModes(){
+    
+    if(newMode != currMode)
+    {
+        paintBtn.classList.remove('active');
+        rainbowBtn.classList.remove('active');
+        erasorBtn.classList.remove('active');
+    }
+
+    if(newMode == PAINT)
+        paintBtn.classList.add('active');
+    else if(newMode == ERASOR)
+        erasorBtn.classList.add('active');
+    else if(newMode == RAINBOW)
+        rainbowBtn.classList.add('active');
+
+    currMode = newMode;
+}
 
 function makeGrid(block){
 

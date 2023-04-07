@@ -12,20 +12,24 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎨</text></svg>">
 </head>
 <body>
-    <div class="controls">
-        <h1 class="font-big">Etch a sketch</h1>
-        <input id="sizeSlider" type="range" value="16" min="4" max="64">
-        <div id="sizeIndicator" class="font-medium"></div>
+    <div class="body">
+        <div class="controls">
+            <h1 class="font-big">Etch a sketch</h1>
+            <input id="sizeSlider" type="range" value="16" min="4" max="64">
+            <div id="sizeIndicator" class="font-medium"></div>
 
-        <input type="color" id="colors" value="#0B2447"/>
+            <input type="color" id="colors" value="#0B2447"/>
 
-        <button id="paint" value="paint">Paint</button>
-        <button id="rainbow" value="rainbow">Rainbow</button>
-        <button id="erasor" value="erasor">Erasor</button>
-        <button id="clear" value="clear">Clear</button>
-    </div>
-    <div class="container" id="container">
-        
+            <button id="paint" class="active" value="paint">Paint</button>
+            <button id="rainbow" value="rainbow">Rainbow</button>
+            <button id="erasor" value="erasor">Erasor</button>
+            <button id="clear" value="clear">Clear</button>
+            <div>        Made by <a href="https://twitter.com/mariyacodes">Mariya</a> 
+            </div>
+        </div>
+        <div class="container" id="container">
+            
+        </div>
     </div>
 </body>
 </html>

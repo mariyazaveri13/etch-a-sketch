@@ -7,10 +7,13 @@
 
 body{
     background: #19376D;
-    display: flex;
-    justify-content: center;
     font-family: 'Berkshire Swash',sans-serif;
     color: #A5D7E8;
+}
+
+.body{
+    display: flex;
+    justify-content: center;
 }
 
 .font-big{
@@ -83,4 +86,8 @@ button:hover {
     background: #0B2447; 
     color: #A5D7E8;
     border: 2px solid #A5D7E8;
+}
+
+a:visited{
+    color: #A5D7E8;
 }
