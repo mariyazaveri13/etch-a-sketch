@@ -14,3 +14,8 @@ Learning outcomes -
 - Got a clear understanding of how JavaScript events work
 - Got familiar with different styles
 - Developed better debugging skills
+
+Demo -
+
+http://mariyazaveri13.github.io/etch-a-sketch/ 👈
+
