@@ -48,7 +48,7 @@ body{
     padding: 10vh;
     display: flex;
     flex-direction: column;
-    gap: 1.5vh;
+    gap: 1vh;
     align-items: center;
 }
 
