@@ -1,10 +1,39 @@
 const DEFAULT_GRID = 16;
 
+const slider = document.getElementById('sizeSlider');
+const parentNode = document.getElementById('container');
+const indicator = document.getElementById('sizeIndicator');
+const paintBtn = document.getElementById('paint');
+const erasorBtn = document.getElementById('erasor');
+
+let currMode = 'paint';
+let newMode = '';
+
+let childDivs;
+
 makeGrid(DEFAULT_GRID);
 
-document.getElementById('sizeSlider').addEventListener('input',(e)=>{
-    makeGrid(e.target.value);
-});
+let mouseDown = false;
+document.body.onmousedown  = (e) => (mouseDown = true);
+document.body.onmouseup = (e) => (mouseDown = false);
+
+slider.oninput = (e) => makeGrid(e.target.value);
+
+paintBtn.onclick = (e) => addClassActive('paint');
+erasorBtn.onclick = (e) => addClassActive('erasor');
+
+function addClassActive(mode){
+    switch(mode){
+        case 'paint':
+            paint();
+            break;
+
+        case 'erasor':
+            erase();
+            break;
+    }
+}
+
 
 function makeGrid(block){
 
@@ -12,12 +41,10 @@ function makeGrid(block){
     
     let sizePerBlock = 960/block;
 
-    const parentNode = document.getElementById('container');
-
     while (parentNode.firstChild) {
         parentNode.removeChild(parentNode.lastChild);
     }
-    document.getElementById('sizeIndicator').innerText= `${block} x ${block}`;
+    indicator.innerText= `${block} x ${block}`;
 
     for(let i = 0 ; i < squareBlock; i++){
         const miniDivs = document.createElement('div');
@@ -31,10 +58,15 @@ function makeGrid(block){
 }
 
 function paint(){
-    const childDivs = document.querySelectorAll('.container > div');
+    childDivs = document.querySelectorAll('.container > div');
     childDivs.forEach(element => {
-        element.addEventListener('mousemove',(e)=>{
-            element.style.background = '#0B2447';
-        }); 
+        element.onmousemove = (e) => mouseDown == true ? element.style.background = '#0B2447' : false;
+    });
+}
+
+function erase(){
+    childDivs = document.querySelectorAll('.container > div');
+    childDivs.forEach(element => {
+        element.onmousemove = (e) => mouseDown == true ? element.style.background = '#fff' : false;
     });
 }
